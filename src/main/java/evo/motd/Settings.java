@@ -31,6 +31,7 @@ public final class Settings {
     public CountMode maxMode;
     public int maxValue;
     public List<String> hover;
+    public boolean hideHover;
 
     public boolean maintenance;
     public Motd maintenanceMotd;
@@ -68,6 +69,7 @@ public final class Settings {
         maxMode = parseEnum(CountMode.class, root.node("players", "max", "mode").getString("real"), CountMode.REAL);
         maxValue = root.node("players", "max", "value").getInt();
         hover = strings(root.node("players", "hover"));
+        hideHover = root.node("players", "hide-hover").getBoolean(false);
 
         maintenance = root.node("maintenance", "enabled").getBoolean(false);
         maintenanceMotd = new Motd(root.node("maintenance", "motd", "line1").getString(""),

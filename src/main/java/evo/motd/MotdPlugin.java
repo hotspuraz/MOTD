@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import org.slf4j.Logger;
 
-@Plugin(id = "motd", name = "MOTD", version = "1.0.0",
+@Plugin(id = "motd", name = "MOTD", version = "1.1.0",
         description = "Configurable MOTD, player counts and maintenance mode", authors = {"evo"})
 public final class MotdPlugin {
 

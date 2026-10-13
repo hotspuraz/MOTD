@@ -26,6 +26,9 @@ players:
   max:
     mode: online-plus
     value: 1
+  # true = remove the hover box over the player count entirely (ignores the hover lists below,
+  # including the maintenance one).
+  hide-hover: false
   # Replaces the hover player list. Leave empty to keep the real sample.
   hover:
     - "<gold>My Network"

@@ -50,7 +50,9 @@ public final class PingListener {
         b.description(Text.parse(joined, proxy, online, max));
 
         List<String> hover = s.maintenance && !s.maintenanceHover.isEmpty() ? s.maintenanceHover : s.hover;
-        if (!hover.isEmpty()) {
+        if (s.hideHover) {
+            b.clearSamplePlayers();
+        } else if (!hover.isEmpty()) {
             List<ServerPing.SamplePlayer> sample = new ArrayList<>();
             for (String line : hover) {
                 // The vanilla client only renders section-sign colours in the hover list.
