@@ -1,0 +1,57 @@
+# MOTD for Velocity. Text uses MiniMessage: https://docs.advntr.dev/minimessage/format.html
+# Placeholders (usable in motd lines, hover text and kick messages):
+#   %online%  displayed online count     %real_online%  actual online count
+#   %max%     displayed max players      %date%  %time%  server date / time
+#   %servers% number of registered backend servers
+
+rotation:
+  # fixed      - always the first MOTD
+  # random     - a random MOTD on every ping
+  # sequential - cycles through the list, switching every interval-seconds
+  mode: random
+  interval-seconds: 30
+
+motds:
+  - line1: "<gradient:#55ffff:#5555ff><bold>My Network</bold></gradient> <gray>| <white>%online% online"
+    line2: "<yellow>Welcome! <gray>Join the fun."
+  - line1: "<gradient:#ff5555:#ffaa00><bold>My Network</bold></gradient> <gray>| <white>%online%/%max%"
+    line2: "<green>Now with more things to do!"
+
+players:
+  # online: real | fixed | offset
+  online:
+    mode: real
+    value: 0
+  # max: real | fixed | online-plus   (real = proxy's configured show-max-players)
+  max:
+    mode: online-plus
+    value: 1
+  # Replaces the hover player list. Leave empty to keep the real sample.
+  hover:
+    - "<gold>My Network"
+    - "<gray>%real_online% playing right now"
+    - ""
+    - "<aqua>play.example.com"
+
+maintenance:
+  enabled: false
+  motd:
+    line1: "<red><bold>My Network</bold> <gray>| <red>Maintenance"
+    line2: "<yellow>We'll be back soon!"
+  # Shown in place of the version (red text next to the ping bars).
+  version-text: "<red>Maintenance"
+  # Players with this permission (or whose name is listed below) can still join.
+  bypass-permission: "motd.maintenance.bypass"
+  allowed-players: []
+  kick-message: "<red><bold>Maintenance</bold>\n<gray>The network is down for maintenance. Please check back later."
+  # Show the hover list below instead of players.hover during maintenance.
+  hover:
+    - "<red>Maintenance in progress"
+
+messages:
+  prefix: "<gray>[<aqua>MOTD<gray>] "
+  reloaded: "<green>Configuration reloaded."
+  maintenance-on: "<yellow>Maintenance mode <red>enabled<yellow>."
+  maintenance-off: "<yellow>Maintenance mode <green>disabled<yellow>."
+  no-permission: "<red>You don't have permission."
+  usage: "<gray>Usage: <white>/motd <reload|maintenance [on|off]|preview>"
